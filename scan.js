@@ -41,10 +41,11 @@ var dateLog = {}
 var urlToProcessLength = urls.length
 
 var logWorking = function(){
+	console.log("called")
 	var file = path.join('./error-log')
 
-	fs.ensureFile(file, function(err){
-		fs.writeJson(file, {status:'OK'}, {flag:'a'})
+	fs.ensureFile(file, function(err){		
+		fs.writeJsonSync(file, {requestOn:  moment().format('MMM DD h:mm A') }, {flag: 'a'})
 	})
 }
 
