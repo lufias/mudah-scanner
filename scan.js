@@ -30,8 +30,8 @@ var urls = [
 	},
 	
 	{
-		location:'TTDI',
-		url: 'http://www.mudah.my/Selangor/Rooms-for-rent-2100?lst=0&fs=1&w=108&cg=2100&sa=608&so=1&st=u&mre=1'
+		location:'Ampang',
+		url: 'http://www.mudah.my/Selangor/Rooms-for-rent-2100?lst=0&fs=1&w=108&cg=2100&sa=268&so=1&st=u&mre=1'
 	}
 ]
 
@@ -107,13 +107,10 @@ var scanAds = function(url, location){
 
 
 
-		
 			// remove the word today
 			_.each(ads, function(ad){
 				ad.date = ad.date.replace('Today,', '').trim()
 			})
-
-
 
 
 			// convert the date string to moment unix
@@ -129,6 +126,10 @@ var scanAds = function(url, location){
 				return ad.date <= dateLog[location]["lastDate"] 
 			})
 
+			// remove ads which is higher than rm300
+			_.remove(ads, function(ad){				
+				return ad.price > 300
+			})			
 
 
 			// after everything, if there still any ads
@@ -171,9 +172,9 @@ var mail = function(body, location){
  
 	// setup e-mail data with unicode symbols 
 	var mailOptions = {
-	    from: '"Fred Foo" <symphony86@gmail.com>', // sender address 
-	    to: 'saifulazr@gmail.com', // list of receivers 
-	    subject: 'New ads from '+location, // Subject line 
+	    from: '"Mudah Scanner" <mudah-scanner@craekern.com>', // sender address 
+	    to: 'finalboey@gmail.com', // list of receivers 
+	    subject: '(Don\'t Reply) New ads from '+location, // Subject line 
 	    html: body // html body 
 	};
 	 

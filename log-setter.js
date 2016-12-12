@@ -18,7 +18,7 @@ var jsonObj = {
 	"Klang":{
 		lastDate: now
 	},
-	"TTDI":{
+	"Ampang":{
 		lastDate: now
 	}
 
