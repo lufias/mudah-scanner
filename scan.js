@@ -185,7 +185,7 @@ var mail = function(body, location){
 	// setup e-mail data with unicode symbols 
 	var mailOptions = {
 	    from: '"Mudah Scanner" <mudah-scanner@craekern.com>', // sender address 
-	    to: 'saifulazr@gmail.com', // list of receivers 
+	    to: 'finalboey@gmail.com', // list of receivers 
 	    subject: '(Don\'t Reply) New ads from '+location, // Subject line 
 	    html: body // html body 
 	};
