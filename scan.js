@@ -7,6 +7,8 @@ var path = require('path')
 var moment = require('moment')
 
 
+
+
 var urls = [
 	
 	{
@@ -37,6 +39,14 @@ var urls = [
 
 var dateLog = {}
 var urlToProcessLength = urls.length
+
+var logWorking = function(){
+	var file = path.join('./error-log')
+
+	fs.ensureFile(file, function(err){
+		fs.writeJson(file, {status:'OK'}, {flag:'a'})
+	})
+}
 
 var getLocationDate = function(){
 	var file = path.join('./request-log.json')
@@ -199,4 +209,5 @@ var mail = function(body, location){
 	});
 }
 
+logWorking()
 process()
