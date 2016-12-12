@@ -209,5 +209,5 @@ var mail = function(body, location){
 	});
 }
 
-logWorking()
+// logWorking()
 process()
