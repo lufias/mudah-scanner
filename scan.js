@@ -168,12 +168,24 @@ var curateMail = function(ads){
 }
 
 var mail = function(body, location){
-	var transporter = nodemailer.createTransport('smtps://symphony86%40gmail.com:ufuckoff987733@smtp.gmail.com');
+
+	var smtpConfig = {
+	    host: 'smtp.gmail.com',
+	    port: 465,
+	    secure: true, // use SSL, 
+	                  // you can try with TLS, but port is then 587
+	    auth: {
+	      user: 'symphony86@gmail.com', // Your email id
+	      pass: 'ufuckoff987733' // Your password
+	    }
+	  };
+	var transporter = nodemailer.createTransport(smtpConfig);
+	// var transporter = nodemailer.createTransport('smtps://symphony86%40gmail.com:ufuckoff987733@smtp.gmail.com');
  
 	// setup e-mail data with unicode symbols 
 	var mailOptions = {
 	    from: '"Mudah Scanner" <mudah-scanner@craekern.com>', // sender address 
-	    to: 'finalboey@gmail.com', // list of receivers 
+	    to: 'saifulazr@gmail.com', // list of receivers 
 	    subject: '(Don\'t Reply) New ads from '+location, // Subject line 
 	    html: body // html body 
 	};
