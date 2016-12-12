@@ -40,9 +40,8 @@ var urls = [
 var dateLog = {}
 var urlToProcessLength = urls.length
 
-var logWorking = function(){
-	console.log("called")
-	var file = path.join('error-log')
+var logWorking = function(){	
+	var file = path.join(__dirname, 'error-log')
 
 	fs.ensureFile(file, function(err){		
 		fs.writeJsonSync(file, {requestOn:  moment().format('MMM DD h:mm A') }, {flag: 'a'})
@@ -50,13 +49,13 @@ var logWorking = function(){
 }
 
 var getLocationDate = function(){
-	var file = path.join('request-log.json')
+	var file = path.join(__dirname, 'request-log.json')
 	return fs.readJsonSync(file)
 }
 
 var writeLocationDate = function(){
 	
-	var file = path.join('request-log.json')
+	var file = path.join(__dirname, 'request-log.json')
 
 	fs.ensureFile(file, function(err){
 		fs.writeJson(file, dateLog)
