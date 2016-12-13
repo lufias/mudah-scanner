@@ -97,25 +97,30 @@ var scanAds = function(url, location){
 				var adLink = $(ad).find('.list_title a')
 				var price = $(ad).find('.ads_price')
 				var date = $(ad).find('.location.bottom_info div')[0]
+				var gender = $(ad).find('.roommate-gender')
 
 				ads.push({
 					img:img.attr('src'),
 					adLink: adLink.attr('href'),
 					title: adLink.text(),
 					price: parseInt(price.text().replace ( /[^\d.]/g, '' )),
-					date: $(date).text().trim()
+					date: $(date).text().trim(),
+					gender: $(gender[0]).text()
 
 				})
 			})
 
-
-
+			
 			// we only going to take today ads
 			ads = _.filter(ads, function(ad){
-				return ad.date.match(/Today,/i)
+				return ad.date.match(/Today/i)
 			})
 
-
+			// remove ads which contain Female
+			_.remove(ads, function(ad){
+				return ad.gender.match(/Female/i)
+			})
+			
 
 			// remove the word today
 			_.each(ads, function(ad){
